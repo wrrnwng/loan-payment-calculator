@@ -13,7 +13,7 @@ export const useUserInputs = defineStore('userInput', () => {
   const { paymentTerms } = usePaymentTable()
 
   watch(downPaymentDollar, () => {
-    if (purchasePrice.value && downPaymentDollar.value) {
+    if (purchasePrice.value !== null && downPaymentDollar.value !== null) {
       downPaymentPercentage.value = downPaymentDollar.value / purchasePrice.value * 100
     }
   })
@@ -23,8 +23,8 @@ export const useUserInputs = defineStore('userInput', () => {
   })
 
   const setDownPaymentDollar = () => {
-    if (purchasePrice.value) {
-      if (downPaymentPercentage.value) {
+    if (purchasePrice.value !== null) {
+      if (downPaymentPercentage.value !== null) {
         downPaymentDollar.value = Math.round(purchasePrice.value * downPaymentPercentage.value) / 100
       } else {
         downPaymentDollar.value = 0
@@ -37,7 +37,7 @@ export const useUserInputs = defineStore('userInput', () => {
       setDownPaymentDollar()
     }
 
-    if (purchasePrice.value && interestRate.value && mortgageTerm.value && downPaymentDollar.value) {
+    if (purchasePrice.value !== null && interestRate.value !== null && mortgageTerm.value !== null && downPaymentDollar.value !== null) {
       const totalAmount = purchasePrice.value - downPaymentDollar.value
       const monthlyPayment = roundToCents(getMonthlyPayment(totalAmount, mortgageTerm.value, interestRate.value / 100 / 12))
       const totalOverLoanTerm = monthlyPayment * mortgageTerm.value
