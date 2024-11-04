@@ -1,4 +1,3 @@
-import { sortBy } from "lodash";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
@@ -24,9 +23,7 @@ export const usePaymentTable = defineStore('paymentTable', () => {
       currentlyOrderedBy.value = columnValue
       currentOrder.value = 'desc'
     }
-
-    paymentTerms.value = sortBy(paymentTerms.value, currentlyOrderedBy.value, currentOrder.value)
   }
 
-  return { paymentTerms, currentOrder, currentlyOrderedBy, updateOrder }
+  return { paymentTerms, updateOrder, currentlyOrderedBy, currentOrder }
 })

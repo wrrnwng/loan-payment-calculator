@@ -13,7 +13,7 @@ const store = useUserInputs()
       v-model.number="store.interestRate" />
     <InputField name="Down Payment in $" placeholder="E.g. $15,000,000" :min="0" :step="0.01"
       v-model.number="store.downPaymentDollar" />
-    <InputField name="Down Payment in %" placeholder="E.g. 20%" :min="0" :max="100"
+    <InputField name="Down Payment in %" placeholder="E.g. 20%" :min="0" :max="100" step="any"
       v-model.number="store.downPaymentPercentage" />
     <InputField name="Mortgage Term" required placeholder="E.g. 90 months" :min="0" v-model.number="store.mortgageTerm" />
     <button

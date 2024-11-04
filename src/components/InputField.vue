@@ -5,7 +5,7 @@ type Props = {
   placeholder?: string;
   min?: number;
   max?: number;
-  step?: number;
+  step?: number | 'any';
 }
 
 withDefaults(defineProps<Props>(), { required: false })

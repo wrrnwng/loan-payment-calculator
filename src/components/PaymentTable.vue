@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { orderBy } from "lodash";
 import TableHeader from './TableHeader.vue'
 import TableRow from './TableRow.vue'
-import { useUserInputs } from '../stores/userInputs'
+import { usePaymentTable } from '../stores/paymentTable'
 
-const store = useUserInputs()
-const orderedTerms = computed(() => store.paymentTerms)
+const store = usePaymentTable()
+
+const orderedTerms = computed(() => orderBy(store.paymentTerms, store.currentlyOrderedBy, store.currentOrder))
+
 </script>
 
 <template>
